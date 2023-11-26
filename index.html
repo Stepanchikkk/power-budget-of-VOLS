@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рассчет бюджета мощности канала 5G</title>
+    <style>
+        body {
+            background-color: #19232D;
+            color: #E8F0F4;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        table {
+            margin: 0 auto;
+            background-color: #25313C;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        label {
+            color: #DCE2E8;
+        }
+
+        input[type="number"] {
+            width: 150px;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background-color: #3D84A8;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #9AC7E6;
+        }
+
+        #dat {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Калькулятор рассчета бюджета мощности канала 5G</h1>
+     <!-- Форма для ввода параметров -->
+     <table>
+        <tr>
+            <td align="right"><label for="RadiusCell">Радиус соты, м:</label></td>
+            <td><input type="number" id="RadiusCell"></td>
+        </tr>
+        <tr>    
+            <td align="right"><label for="CenterFrequencyTx">Центральная частота для Tx, МГц:</label></td>
+            <td><input type="number" id="CenterFrequencyTx"></td>
+        </tr>
+        <tr>
+            <td align="right"><label for="RxSensitivity">Чувствительность приемника, дБм:</label></td>
+            <td><input type="number" id="RxSensitivity"></td>
+        </tr>
+        <tr>
+            <td align="right"><label for="CableLoss">Потери в фидере, дБ:</label></td>
+            <td><input type="number" value="2" id="CableLoss"></td>
+        </tr>
+        <tr>
+            <td align="right"><label for="TxPower">Мощность передатчика, дБм</label></td>
+            <td><input type="number" id="TxPower"></td>
+        </tr>
+        <tr>
+            <td align="right"><label>Тип местности:</label></td>
+            <td>
+                <div>
+                    <input type="radio" value="9" name="cb" id="DenseUrbanDevelopment">
+                    <label for="DenseUrbanDevelopment">Плотная городская застройка</label><br>
+
+                    <input type="radio" value="8" name="cb" id="OrdinaryUrbanDevelopment">
+                    <label for="OrdinaryUrbanDevelopment">Обычная городская</label><br>
+
+                    <input type="radio" value="7" name="cb" id="SuburbanDevelopment">
+                    <label for="SuburbanDevelopment">Пригородная</label><br>
+
+                    <input type="radio" value="6" name="cb" id="RuralDevelopment">
+                    <label for="RuralDevelopment">Сельская</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><label for="BodyLoss">Потери при прохождении тела человека, дБ:</label></td>
+            <td><input type="number" value="5" id="BodyLoss"></td>
+        </tr>
+        <tr>
+            <td align="right"><label for="FoliageLoss">Потери на листве крон деревьев, дБ:</label></td>
+            <td><input type="number" value="11" id="FoliageLoss"></td>
+        </tr>
+        <tr>
+            <td align="right"><label for="RainIceMargin">Запас по потерям на случай дождя/снега, дБ:</label></td>
+            <td><input type="number" value="0" id="RainIceMargin"></td>
+        </tr>
+        <tr>
+            <td align="right"><label for="SlowFadingMargin">Запас по потерям на случай замираний (интерференция волн), дБ:</label></td>
+            <td><input type="number" value="5" id="SlowFadingMargin"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><button onclick="getResult()">Рассчитать</button></td>
+        </tr>
+        <tfoot>
+            <td colspan="2" align="center"><div id="dat"></div></td>
+        </tfoot>
+    </table>
+    <br>
+    
+
+    <script src="main.js"></script>
+</body>
+</html>
